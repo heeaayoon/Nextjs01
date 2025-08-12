@@ -26,19 +26,5 @@
     "category": "상의",
     "price": 9000,
     "description": "유아상의3"
-  },
-  {
-    "id": "1754880464276",
-    "name": "원피스",
-    "category": "clothes",
-    "price": 48000,
-    "description": "데님원피스"
-  },
-  {
-    "id": "1754880581744",
-    "name": "원피스2",
-    "category": "clothes",
-    "price": 48000,
-    "description": "데님원피스"
   }
 ]

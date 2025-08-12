@@ -27,8 +27,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* 라우팅시에 변화가 생기는 부분 */}
-        {children} 
+        {children}
       </body>
     </html>
   );

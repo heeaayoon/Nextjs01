@@ -1,15 +1,22 @@
-'use client'
+'use client' //클라이언트 컴포넌트
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation"; //클라이언트 컴포넌트에서 쿼리스트링을 추출하기 위해 추가한 부분
 
 type helloT = {
   msg : string
 }
 
-export default function HelloPage() {
+export default function HelloPage1() {
   const [tdata,setTdata] = useState<helloT[] |null>([]);
   
+  //클라이언트 컴포넌트에서 쿼리스트링을 추출하는 방법
+  const searchParams = useSearchParams();
+  const msg = searchParams.get('msg');
+  console.log(msg)
+
   const getFetchData = async ()=>{
-    const resp = await fetch('http://localhost:3000/api/hello'); //app>api>hello 데이터 패치하기
+    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
+    const resp = await fetch(`${baseUrl}/api/hello`); //app>api>hello 데이터 패치하기
     const data = await resp.json();
     setTdata(data);
   }

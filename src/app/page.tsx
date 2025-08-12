@@ -1,5 +1,4 @@
 import Image from "next/image";
-//app 폴더 안의 page.tsx 가 가장 기본으로 뜨는 페이지임(index.html의 역할과 동일함)
 
 export default function Home() {
   return (
