@@ -1,19 +1,21 @@
 'use client' //클라이언트 컴포넌트
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation"; //클라이언트 컴포넌트에서 쿼리스트링을 추출하기 위해 추가한 부분
+//import { useSearchParams } from "next/navigation"; //클라이언트 컴포넌트에서 쿼리스트링을 추출하기 위해 추가한 부분
 
 type helloT = {
   msg : string
 }
 
-export default function HelloPage1() {
+export default function HelloPageC() {
   const [tdata,setTdata] = useState<helloT[] |null>([]);
   
   //클라이언트 컴포넌트에서 쿼리스트링을 추출하는 방법
-  const searchParams = useSearchParams();
-  const msg = searchParams.get('msg');
-  console.log(msg)
+  // const searchParams = useSearchParams();
+  // const msg = searchParams.get('msg');
+  // console.log(msg)
 
+
+  //클라이언트 측에서 패치함 -> static mode
   const getFetchData = async ()=>{
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
     const resp = await fetch(`${baseUrl}/api/hello`); //app>api>hello 데이터 패치하기
