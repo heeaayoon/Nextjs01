@@ -1,13 +1,13 @@
 import type { Product } from "@/types/product"
 import Link from "next/link"
 
-interface ReactProductCardProps{
+interface ReactProductCardProps{ //규칙, Props로 넘어오는 건 interface로 따로 빼기
   data:Product
 }
 
-export default function ProductCard({data}:ReactProductCardProps) {
+export default async function ProductCard({data}:ReactProductCardProps) {
   return (
-    <div className='border-2 border-indigo-950-700 rounded-2xl p-3 m-2'>
+    <div className='border-2 border-indigo-200 rounded-2xl p-3 m-2'>
         <h2>
           <Link href={`/productS/${data.id}`}>
             {data.name}

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { Product } from "@/types/product";
+//get 방식
 
 //CRUD를 구현할 JSON 파일 접근을 위해 필요한 모듈 추가
 import path from "path";

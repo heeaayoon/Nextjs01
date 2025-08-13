@@ -1,5 +1,5 @@
 'use client'
-import { useRouter } from "next/navigation"
+import { useRouter } from "next/navigation" //next/navigation의 useRoute를 사용해야함!!
 
 interface ProductdelProp{
     id:string
@@ -10,7 +10,7 @@ export default function Productdel({id}:ProductdelProp) {
 
     const handleDel = async()=>{
         if(confirm("이 상품을 삭제하시겠습니까?")){
-            const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
+            const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ; 
             const resp = await fetch(`${baseUrl}/api/productS/${id}`, {method:"DELETE"});
             
             if(resp.ok){
@@ -28,9 +28,9 @@ export default function Productdel({id}:ProductdelProp) {
         <div>
             <button className="p-3 rounded-2xl text-white mx-2 
                                 hover:cursor-pointer hover:font-bold
-                                bg-blue-400 hover:bg-blue-100 hover:text-black"
+                                bg-red-400 hover:bg-red-100 hover:text-black"
                     onClick={handleDel} >
-                        삭제
+                    삭제
             </button>
         </div>
     )

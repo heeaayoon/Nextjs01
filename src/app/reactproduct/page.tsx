@@ -6,7 +6,7 @@ import type { Product } from "@/types/product";
 
 
 export default function reactProduct() {
-  const [tdata,setTdata] = useState<Product[] |null>([]);
+  const [tdata,setTdata] = useState<Product[] |null>([]); //클라이언트 컴포넌트에서는 state훅 사용 가능
   
   //클라이언트 측에서 패치함 -> static mode
   const getFetchData = async ()=>{
@@ -16,7 +16,7 @@ export default function reactProduct() {
     setTdata(data);
   }
 
-  //맨 처음 한번 실행
+  //맨 처음 한번 실행 //클라이언트 컴포넌트에서는 Effect훅 사용 가능
   useEffect(()=>{
     getFetchData();
   },[])
@@ -31,8 +31,8 @@ export default function reactProduct() {
         <h1>
             {
                 tdata && tdata.map((item:Product) =>
-                        <ReactProductCard key = {item.id}
-                                        data = {item} />
+                                        <ReactProductCard key = {item.id}
+                                                        data = {item} />
                 )
             }
         </h1>
