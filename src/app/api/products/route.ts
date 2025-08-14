@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { Product } from "@/types/product";
-//get 방식
+
+//**쿼리스트링에서 쿼리 파라미터(?key=value)를 분석하여 사용**
+//http://localhost:3000/api/products?category=clothes
 
 //CRUD를 구현할 JSON 파일 접근을 위해 필요한 모듈 추가
 import path from "path";
@@ -15,7 +17,7 @@ export async function GET(request : NextRequest) {
     //src/app/data/products.json 파일을 불러오기
     const jsonData = await fs.readFile(dataPath, 'utf-8');
 
-    //불로온 파일을 JSON 파싱을 통해 Product 배열로 만들기
+    //불러온 파일을 JSON 파싱을 통해 Product 배열로 만들기
     const products : Product[] = JSON.parse(jsonData) ;
 
     //URL의 쿼리 스트링 체크해서 category 키값을 가지고 옴 
@@ -25,11 +27,12 @@ export async function GET(request : NextRequest) {
     //URL의 쿼리 스트링에 category 값이 있는 경우는 해당하는 category값만 조회
     if (category) {
       const cProducts = products.filter(item => item.category === category) ;
+      console.log(cProducts);
       return NextResponse.json(cProducts) ;
     }
 
     //터미널 콘솔에 출력 
-    //console.log(products)
+    console.log(products)
     return NextResponse.json(products) ;
   } catch(error){
     console.error("파일 불러오기 오류 :", error)

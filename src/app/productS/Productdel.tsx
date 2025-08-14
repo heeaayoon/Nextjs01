@@ -11,7 +11,7 @@ export default function Productdel({id}:ProductdelProp) {
     const handleDel = async()=>{
         if(confirm("이 상품을 삭제하시겠습니까?")){
             const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ; 
-            const resp = await fetch(`${baseUrl}/api/products/${id}`, {method:"DELETE"});
+            const resp = await fetch(`${baseUrl}/api/products/${id}`, {method:"DELETE"}); //api>products>id 를 패치해야함!!
             
             if(resp.ok){
                 alert("정상적으로 삭제되었습니다.");

@@ -6,6 +6,8 @@ import type { Product } from "@/types/product";
 //   params : {id : string}
 // }
 
+//**params 객체로 id 값을 받아 사용**
+
 //CRUD를 구현할 JSON 파일 접근을 위해 필요한 모듈 추가
 import path from "path";
 import { promises as fs } from "fs";
@@ -13,10 +15,9 @@ import { promises as fs } from "fs";
 //CRUD를 구현할 JSON 파일의 경로 만들기
 const dataPath = path.join(process.cwd() , 'src/app/data/products.json') ;
 
-//src/app/data/products.json 파일을 불러오기
+//src/app/data/products.json 파일을 불러오기 -> 불러온 파일을 JSON 파싱
 async function getProduts() : Promise<Product[]> {
   const jsonData = await fs.readFile(dataPath, 'utf-8');
-  
   return JSON.parse(jsonData) ;
 }
 
@@ -32,7 +33,7 @@ export async function GET(
   {params} : {params : Promise<{id : string}>}
 ) {
   try {
-    //불로온 파일을 JSON 파싱을 통해 Product 배열로 만들기
+    //Product 배열로 만들기
     const products  = await getProduts() ;  
     const { id } = await params ;
     const product = products.find(item => item.id === id) ;

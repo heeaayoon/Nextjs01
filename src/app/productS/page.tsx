@@ -3,9 +3,13 @@ import Link from "next/link";
 import ProductCard from "./ProductCard";
 import type { Product } from "@/types/product";
 
+//카테고리 선택 부분 만들고
+//http://localhost:3000/productS?category=clothes 를 패치해서 
+//카테고리에 해당하는 데이터의 card만 나오도록 수정
+
 async function getProducts():Promise<Product[]>{
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
-  const resp = await fetch(`${baseUrl}/api/products`, {cache:'no-store'}); //들어오는 시점에 패치시키기 위해 cache 옵션을 줌 -> dynamic mode
+  const resp = await fetch(`${baseUrl}/api/products`, {cache:'no-store', method:"GET"}); //들어오는 시점에 패치시키기 위해 cache 옵션을 줌 -> dynamic mode
   
   if(!resp.ok) throw new Error("Fetch ERROR"); //오류가 발생한 경우
   
