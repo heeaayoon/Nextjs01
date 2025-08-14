@@ -1,12 +1,18 @@
 import Link from "next/link";
 import type { Product } from "@/types/product";
 import Productdel from "../Productdel";
+import { supabase } from "@/lib/supabase/client";
 
 const getProduct = async (id:string):Promise <Product>=>{
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
-  const resp = await fetch(`${baseUrl}/api/products/${id}`); //app>api>products>id 데이터 패치하기
-  const data:Product = await resp.json();
-  return data;
+  const {data:product , error} = await supabase
+                                .from('products') //supabase의 테이블 이름
+                                .select('*')
+                                .eq('id',id)
+                                .single();
+  // if(error){
+  //     return <div> ERROR : {error.message} </div>
+  // }
+  return product;
 }
 
 export default async function reactProductDetail({params,}:{params:Promise<{id:string}>; //'동적라우팅(/방식)'에는 params 라는 오브젝트를 사용하는 것이 중요함 -> Promise로 바뀜(new!)
@@ -18,12 +24,12 @@ export default async function reactProductDetail({params,}:{params:Promise<{id:s
     <div className="w-9/10 h-screen m-10 flex flex-col justify-center items-center">
       <div className='border-2 border-indigo-200 rounded-2xl p-3 m-2'>
         <div className="flex justify-center">
-            <Link href={'/productS'} className="p-3 rounded-2xl text-white mx-2 
+            <Link href={'/supaproduct'} className="p-3 rounded-2xl text-white mx-2 
                                                 hover:cursor-pointer hover:font-bold
                                                bg-blue-300 hover:bg-blue-100 hover:text-black"> 
                 상품목록으로
             </Link>
-            <Link href={`/productS/${id}/edit`} className="p-3 rounded-2xl text-white mx-2 
+            <Link href={`/supaproduct/${id}/edit`} className="p-3 rounded-2xl text-white mx-2 
                                                             hover:cursor-pointer hover:font-bold
                                                            bg-green-300 hover:bg-green-100 hover:text-black"> 
                 수정

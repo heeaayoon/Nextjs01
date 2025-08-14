@@ -11,7 +11,7 @@ export default function NewProductPage() {
         </h1>
         <ProductForm />
         <div className="flex justify-center">
-          <Link href="/productS" className="p-3 rounded-2xl text-white mx-2 
+          <Link href="/supaproduct" className="p-3 rounded-2xl text-white mx-2 
                                             hover:cursor-pointer hover:font-bold
                                            bg-blue-300 hover:bg-blue-100 hover:text-black">
             상품 목록으로
