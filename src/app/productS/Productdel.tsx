@@ -1,5 +1,5 @@
 'use client'
-import { useRouter } from "next/navigation" //next/navigation의 useRoute를 사용해야함!!
+import { useRouter } from "next/navigation" //'next/navigation'의 useRoute를 사용해야함!!
 
 interface ProductdelProp{
     id:string
