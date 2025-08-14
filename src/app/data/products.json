@@ -1,12 +1,5 @@
 [
   {
-    "id": "123",
-    "name": "에어맥스 270",
-    "category": "shoes",
-    "price": 129000,
-    "description": "편안한 착화감과 스타일을 동시에 갖춘 인기 러닝화"
-  },
-  {
     "id": "201",
     "name": "패딩 자켓",
     "category": "clothes",
@@ -26,5 +19,12 @@
     "category": "상의",
     "price": 9000,
     "description": "유아상의3"
+  },
+  {
+    "id": "1755135991558",
+    "name": "수정",
+    "category": "rwer",
+    "price": 5000,
+    "description": "rewr"
   }
 ]
