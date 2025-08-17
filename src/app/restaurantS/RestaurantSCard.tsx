@@ -1,11 +1,11 @@
 'use client'
 import type { rest } from "@/types/rest"
 
-interface ReactRestaurantCardProps{
+interface RestaurantSCardProps{
   data:rest
 }
 
-export default function ReactRestaurantCard({data}:ReactRestaurantCardProps) {
+export default function RestaurantSCard({data}:RestaurantSCardProps) {
 
 const menu = data.RPRSNTV_MENU.replaceAll('\n', ',') //모든 줄바꿈 문자(\n)를 쉼표(,)로 바꿈
                               .split(',') //쉼표를 기준으로 개별 메뉴 항목으로 나눔

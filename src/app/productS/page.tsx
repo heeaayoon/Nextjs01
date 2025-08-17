@@ -17,7 +17,7 @@ async function getProducts():Promise<Product[]>{
   return data;
 }
 
-export default async function reactProduct() {
+export default async function productS() {
   const products = await getProducts(); //서버 컴포넌트 이므로 state훅 사용 불가 
                   //await -> 이 작업을 끝내기 전까지 다른 작업을 할 수 없음
                   //즉, 데이터를 받아와야 다음 작업을 할 수 있음

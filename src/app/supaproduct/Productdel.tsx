@@ -1,5 +1,6 @@
 'use client'
 import { useRouter } from "next/navigation" //'next/navigation'의 useRoute를 사용해야함!!
+import { supabase } from "@/lib/supabase/client"
 
 interface ProductdelProp{
     id:string
@@ -9,18 +10,30 @@ export default function Productdel({id}:ProductdelProp) {
     const router = useRouter();
 
     const handleDel = async()=>{
-        if(confirm("이 상품을 삭제하시겠습니까?")){
-            const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ; 
-            const resp = await fetch(`${baseUrl}/api/products/${id}`, {method:"DELETE"});
+        // if(confirm("이 상품을 삭제하시겠습니까?")){
+        //     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ; 
+        //     const resp = await fetch(`${baseUrl}/api/products/${id}`, {method:"DELETE"});
             
-            if(resp.ok){
-                alert("정상적으로 삭제되었습니다.");
-                router.push("/productS")
-                router.refresh();
-            }else{
-                const data = await resp.json();
-                alert(`삭제오류 : ${data.message || "알수 없는 오류"}`)
-            }
+        //     if(resp.ok){
+        //         alert("정상적으로 삭제되었습니다.");
+        //         router.push("/productS")
+        //         router.refresh();
+        //     }else{
+        //         const data = await resp.json();
+        //         alert(`삭제오류 : ${data.message || "알수 없는 오류"}`)
+        //     }
+        // }
+        const {error} = await supabase
+            .from('products')
+            .delete()
+            .eq('id', id);
+
+        if(error){
+            alert(`삭제오류 : ${error.message}`)
+        }else{
+            alert("정상적으로 삭제되었습니다.");
+            router.push("/supaproduct")
+            router.refresh();
         }
     }
 
