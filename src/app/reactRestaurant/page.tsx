@@ -5,7 +5,7 @@ import ReactRestaurantCard from "./ReactRestaurantCard";
 import type { rest } from "@/types/rest";
 
 
-export default function reactProduct() {
+export default function ReactRestaurant() {
   const [tdata,setTdata] = useState<rest[] |null>([]); //클라이언트 컴포넌트에서는 state훅 사용 가능
   
   //클라이언트 측에서 패치함 -> static mode
